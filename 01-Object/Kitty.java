@@ -15,13 +15,13 @@ public class Kitty{
   public String getName(){
     return name;
   }
-  public changeName(String newName){
+  public void changeName(String newName){
     name = newName;
   }
-  public makeOlder(int newAge){
+  public void makeOlder(){
     age++;
   }
   public String toString(){
-    return "The amazing" + name;
+    return "The amazing " + name;
   }
 }
