@@ -21,4 +21,7 @@ public class Kitty{
   public makeOlder(int newAge){
     age++;
   }
+  public String toString(){
+    return "The amazing" + name;
+  }
 }
