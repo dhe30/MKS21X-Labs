@@ -1,11 +1,9 @@
 public class Demo{
   /* more methods can go here*/
   public static double distance(Point X, Point Y){
-    return Math.sqrt((X.x-Y.x)**+(X.y+Y.y)**)
+    return Math.sqrt(((X.getX()-Y.getX())*(X.getX()-Y.getX()))+((X.getY()-Y.getY())*(X.getY()-Y.getY())));
   }
-  public double distanceTo(Point X){
-    return Math.sqrt((X.x-x)**+(X.y+y)**)
-  }
+
   public static void main(String[]args){
     Point P1 = new Point(1,1);
     Point P2 = new Point(2,2);

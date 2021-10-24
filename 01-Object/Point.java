@@ -15,6 +15,9 @@ public class Point{
     return y;
   }
   public static double distance(Point X, Point Y){
-    return Math.sqrt((X.x-Y.x)**+(X.y+Y.y)**)
+    return Math.sqrt((X.x-Y.x)*(X.x-Y.x)+(X.y-Y.y)*(X.y-Y.y));
+  }
+  public double distanceTo(Point X){
+    return Math.sqrt((X.x-x)*(X.x-x)+(X.y-y)*(X.y-y));
   }
 }
