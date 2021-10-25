@@ -23,4 +23,31 @@ public class Point{
   public String toString(){
     return "(" + x + ", " + y + ")";
   }
+  public static void main(String[] args){
+    Point one = new Point(0.0, 2.0);
+    Point two = new Point(0.0, -2.0);
+    Triangle a = new Triangle(0.0,1.0,0.0,0.0,1.0,0.0);
+    Triangle b = new Triangle(0.0,-1.0,0.0,0.0,-1.0,0.0);
+    Triangle c = new Triangle(5.0,0.0,0.0,0.0,5.0,10.0);
+    System.out.println(a);
+    System.out.println(a.getPerimeter());
+    System.out.println(a.getVertex(1));
+    a.setVertex(1, one);
+    System.out.println(a);
+    System.out.println(a.getPerimeter());
+    //
+    System.out.println(b);
+    System.out.println(b.getPerimeter());
+    System.out.println(b.getVertex(1));
+    b.setVertex(1, two);
+    System.out.println(b);
+    System.out.println(b.getPerimeter());
+    //
+    System.out.println(c);
+    System.out.println(c.getPerimeter());
+    System.out.println(c.getVertex(1));
+    c.setVertex(1, two);
+    System.out.println(c);
+    System.out.println(c.getPerimeter());
+  }
 }
