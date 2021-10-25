@@ -20,4 +20,7 @@ public class Point{
   public double distanceTo(Point X){
     return Math.sqrt((X.x-x)*(X.x-x)+(X.y-y)*(X.y-y));
   }
+  public String toString(){
+    return "(" + x + ", " + y + ")";
+  }
 }
