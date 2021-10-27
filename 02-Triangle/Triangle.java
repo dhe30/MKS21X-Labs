@@ -31,10 +31,28 @@ public class Triangle{
       v3 = b;
     }
   }
+  public static boolean closeEnough(double a, double b){
+    return (Math.abs(a - b)/a)*100.0 <= 0.001;
+  }
   public String toString(){
     return "{" + v1 + ", " + v2 + ", " + v3 + "}";
   }
   public double getPerimeter(){
     return v1.distanceTo(v2)+v2.distanceTo(v3)+v3.distanceTo(v1);
+  }
+  public boolean equals(Triangle other){
+    return v1.equals(other.v1) && v2.equals(other.v2) && v3.equals(other.v3);
+  }
+  public double area(){
+    double s = (v1.distanceTo(v2)+v2.distanceTo(v3)+v3.distanceTo(v1))/2;
+    return Math.sqrt(s*(s - v1.distanceTo(v2))*(s - v2.distanceTo(v3))*(s - v3.distanceTo(v1)));
+  }
+  public String classify(){
+    if (closeEnough(v1.distanceTo(v2), v2.distanceTo(v3)) && closeEnough(v1.distanceTo(v2), v3.distanceTo(v1))) {
+      return "equilateral";
+    } else if (!closeEnough(v1.distanceTo(v2), v2.distanceTo(v3)) && !closeEnough(v1.distanceTo(v2), v3.distanceTo(v1)) && !closeEnough(v2.distanceTo(v3), v3.distanceTo(v1))){
+      return "scalene";
+    }
+    return "isosceles";
   }
 }
