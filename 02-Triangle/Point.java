@@ -30,6 +30,9 @@ public class Point{
     return (Math.abs(a - b)/a)*100.0 <= 0.001;
   }
   public boolean equals(Point other){
+    if (other == null){
+      return false;
+    }
     return (closeEnough(x, other.x) && closeEnough(y, other.y));
   }
   public static void main(String[] args){
