@@ -41,6 +41,9 @@ public class Triangle{
     return v1.distanceTo(v2)+v2.distanceTo(v3)+v3.distanceTo(v1);
   }
   public boolean equals(Triangle other){
+    if (other == null){
+      return false;
+    }
     return v1.equals(other.v1) && v2.equals(other.v2) && v3.equals(other.v3);
   }
   public double area(){

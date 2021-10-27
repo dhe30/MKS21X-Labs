@@ -24,6 +24,9 @@ public class Point{
     return "(" + x + ", " + y + ")";
   }
   public static boolean closeEnough(double a, double b){
+    if (a == 0 && b == 0){
+      return true;
+    }
     return (Math.abs(a - b)/a)*100.0 <= 0.001;
   }
   public boolean equals(Point other){
