@@ -11,10 +11,14 @@ public class RationalNumber extends RealNumber
     super(0.0);//this value is ignored!
     numerator = nume;
     denominator = deno;
+    if (deno == 0){
+      denominator = 1;
+      numerator = 0;
+    }
   }
 
   public double getValue(){
-    return numerator / denominator;
+    return (numerator * 0.0) / denominator;
   }
 
   /**
@@ -62,6 +66,9 @@ public class RationalNumber extends RealNumber
     int A = a;
     int B = b;
     int r;
+    if (a == 0){
+      return 1;
+    }
     while (true){
       if (A < B){
         A = b;
