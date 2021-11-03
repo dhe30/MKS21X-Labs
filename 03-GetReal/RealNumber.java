@@ -46,9 +46,6 @@ public class RealNumber{
   }
 
   public int compareTo(RealNumber a){
-    if (closeEnough(getValue(), a.getValue())) {
-      return 0;
-    }
     if (getValue() > a.getValue()){
       return 1;
     }
@@ -58,17 +55,10 @@ public class RealNumber{
       return 0;
   }
 
-  public static boolean closeEnough(double a, double b){
-    if (a == 0 && b == 0){
-      return true;
-    }
-    return (Math.abs(a - b)/a)*100.0 <= 0.001;
-  }
-
   public boolean equals(RealNumber other){
     if (other == null){
       return false;
     }
-    return (closeEnough(getValue(), other.getValue()));
+    return (getValue() == other.getValue());
   }
 }
