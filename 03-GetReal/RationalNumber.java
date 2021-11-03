@@ -3,9 +3,9 @@ public class RationalNumber extends RealNumber
   private int numerator, denominator;
 
   /**Initialize the RationalNumber with the provided values
-  *  if the denominator is 0, make the fraction 0/1 instead
-  *@param nume the numerator
-  *@param deno the denominator
+  *  if the getDenominator() is 0, make the fraction 0/1 instead
+  *@param nume the getNumerator()
+  *@param deno the getDenominator()
   */
   public RationalNumber(int nume, int deno){
     super(0.0);//this value is ignored!
@@ -18,33 +18,33 @@ public class RationalNumber extends RealNumber
   }
 
   public double getValue(){
-    return (numerator * 0.0) / denominator;
+    return (getNumerator() * 1.0) / getDenominator();
   }
 
   /**
-  *@return the numerator
+  *@return the getNumerator()
   */
   public int getNumerator(){
     return numerator;
   }
   /**
-  *@return the denominator
+  *@return the getDenominator()
   */
   public int getDenominator(){
     return denominator;
   }
   /**
-  *@return a new RationalNumber that has the same numerator
-  *and denominator as this RationalNumber but reversed.
+  *@return a new RationalNumber that has the same getNumerator()
+  *and getDenominator() as this RationalNumber but reversed.
   */
   public RationalNumber reciprocal(){
-    return new RationalNumber(denominator, numerator);
+    return new RationalNumber(getDenominator(), getNumerator());
   }
   /**
-  *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
+  *@return true when the RationalNumbers have the same getNumerator()s and getDenominator()s, false otherwise.
   */
   public boolean equals(RationalNumber other){
-    return numerator == other.numerator && denominator == other.denominator;
+    return getNumerator() == other.getNumerator() && getDenominator() == other.getDenominator();
   }
 
 
@@ -67,7 +67,7 @@ public class RationalNumber extends RealNumber
     int B = b;
     int r;
     if (a == 0){
-      return 1;
+      return b;
     }
     while (true){
       if (A < B){
@@ -84,22 +84,22 @@ public class RationalNumber extends RealNumber
   }
 
   /**
-  *Divide the numerator and denominator by the GCD
+  *Divide the getNumerator() and getDenominator() by the GCD
   *This must be used to maintain that all RationalNumbers are
   *reduced after construction.
   */
   private void reduce(){
-    int a = gcd(numerator, denominator);
-    numerator = numerator / a;
-    denominator = denominator / a;
+    int a = gcd(getNumerator(), getDenominator());
+    numerator = getNumerator() / a;
+    denominator = getDenominator() / a;
   }
   /******************Operations Return a new RationalNumber!!!!****************/
   /**
   *Return a new RationalNumber that is the product of this and the other
   */
   public RationalNumber multiply(RationalNumber other){
-    int a = numerator * other.numerator;
-    int b = denominator * other.denominator;
+    int a = getNumerator() * other.getNumerator();
+    int b = getDenominator() * other.getDenominator();
     RationalNumber c = new RationalNumber(a, b);
     c.reduce();
     return c;
@@ -109,8 +109,8 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the this divided by the other
   */
   public RationalNumber divide(RationalNumber other){
-    int a = numerator * other.denominator;
-    int b = denominator * other.numerator;
+    int a = getNumerator() * other.getDenominator();
+    int b = getDenominator() * other.getNumerator();
     RationalNumber c = new RationalNumber(a, b);
     c.reduce();
     return c;
@@ -120,11 +120,11 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the sum of this and the other
   */
   public RationalNumber add(RationalNumber other){
-    int lcm = (denominator * other.denominator)/ gcd(denominator, other.denominator);
-    int dm = lcm / denominator;
-    int nm = numerator * dm;
-    int odm = lcm / other.denominator;
-    int onm = other.numerator * odm;
+    int lcm = (getDenominator() * other.getDenominator())/ gcd(getDenominator(), other.getDenominator());
+    int dm = lcm / getDenominator();
+    int nm = getNumerator() * dm;
+    int odm = lcm / other.getDenominator();
+    int onm = other.getNumerator() * odm;
     RationalNumber c = new RationalNumber(nm + onm, lcm);
     c.reduce();
     return c;
@@ -134,11 +134,11 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    int lcm = (denominator * other.denominator)/ gcd(denominator, other.denominator);
-    int dm = lcm / denominator;
-    int nm = numerator * dm;
-    int odm = lcm / other.denominator;
-    int onm = other.numerator * odm;
+    int lcm = (getDenominator() * other.getDenominator())/ gcd(getDenominator(), other.getDenominator());
+    int dm = lcm / getDenominator();
+    int nm = getNumerator() * dm;
+    int odm = lcm / other.getDenominator();
+    int onm = other.getNumerator() * odm;
     RationalNumber c = new RationalNumber(nm - onm, lcm);
     c.reduce();
     return c;

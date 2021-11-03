@@ -9,7 +9,7 @@ public class RealNumber{
   *Return the sum of this and the other
   */
   public double add(RealNumber other){
-    return (value + other.value);
+    return (getValue() + other.getValue());
      //other can be ANY RealNumber, including a RationalNumber
 
      //or other subclasses of RealNumber (that aren't written yet)
@@ -19,21 +19,21 @@ public class RealNumber{
   *Return the product of this and the other
   */
   public double multiply(RealNumber other){
-    return value * other.value;
+    return getValue() * other.getValue();
   }
 
   /*
   *Return the this divided by the other
   */
   public double divide(RealNumber other){
-    return value / other.value;
+    return getValue() / other.getValue();
   }
 
   /*
   *Return the this minus the other
   */
   public double subtract(RealNumber other){
-    return value - other.value;
+    return getValue() - other.getValue();
   }
 
 
@@ -46,15 +46,16 @@ public class RealNumber{
   }
 
   public int compareTo(RealNumber a){
-    if (value > a.getValue()){
-      return 1;
-    }
-    if (value < a.getValue()){
-      return -1;
-    }
-    if (value == a.getValue()){
+    if (closeEnough(getValue(), a.getValue())) {
       return 0;
     }
+    if (getValue() > a.getValue()){
+      return 1;
+    }
+    if (getValue() < a.getValue()){
+      return -1;
+    }
+      return 0;
   }
 
   public static boolean closeEnough(double a, double b){
@@ -68,6 +69,6 @@ public class RealNumber{
     if (other == null){
       return false;
     }
-    return (closeEnough(value, other.getValue());
+    return (closeEnough(getValue(), other.getValue()));
   }
 }
