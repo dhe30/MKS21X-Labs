@@ -44,4 +44,30 @@ public class RealNumber{
   public String toString(){
     return ""+value;
   }
+
+  public int compareTo(RealNumber a){
+    if (value > a.getValue()){
+      return 1;
+    }
+    if (value < a.getValue()){
+      return -1;
+    }
+    if (value == a.getValue()){
+      return 0;
+    }
+  }
+
+  public static boolean closeEnough(double a, double b){
+    if (a == 0 && b == 0){
+      return true;
+    }
+    return (Math.abs(a - b)/a)*100.0 <= 0.001;
+  }
+
+  public boolean equals(RealNumber other){
+    if (other == null){
+      return false;
+    }
+    return (closeEnough(value, other.getValue());
+  }
 }
