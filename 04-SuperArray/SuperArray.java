@@ -13,6 +13,9 @@ public class SuperArray{
     return size;
   }
   public boolean add(String str){
+    if (size == data.length){
+      resize();
+    }
     data[size()] = str;
     size = size() + 1;
     return true;
@@ -47,5 +50,14 @@ public class SuperArray{
     data[index] = element;
     return hold;
   }
-  
+  private void resize(){
+    String[] a = new String[size()];
+    for (int i = 0; i < size(); i++){
+      a[i] = data[i];
+    }
+    data = new String[(size() * 2) + 1];
+    for (int i = 0; i < size(); i++){
+      data[i] = a[i];
+    }
+  }
 }

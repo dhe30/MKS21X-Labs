@@ -45,5 +45,9 @@ public class Tester{
     //setPrint(alist, "yes");
     nope(alist);
     print(alist);
+    SuperArray b = new SuperArray(0);
+    b.add("yes");
+    System.out.println(b);
+    System.out.println(b.toStringDebug());
   }
 }
