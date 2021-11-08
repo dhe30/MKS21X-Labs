@@ -43,11 +43,17 @@ public class Tester{
     System.out.println(alist);
     System.out.println(alist.toStringDebug());
     //setPrint(alist, "yes");
-    nope(alist);
-    print(alist);
+    //nope(alist);
+    //print(alist);
     SuperArray b = new SuperArray(0);
     b.add("yes");
     System.out.println(b);
     System.out.println(b.toStringDebug());
+    alist.add(1, "yes");
+    System.out.println(alist);
+    System.out.println(alist.size());
+    alist.remove(1);
+    System.out.println(alist);
+    System.out.println(alist.size());
   }
 }
