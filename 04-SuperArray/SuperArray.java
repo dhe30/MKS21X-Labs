@@ -107,4 +107,11 @@ public class SuperArray{
     size--;
     return hold;
   }
+  public boolean remove(String target){
+    if (lastIndexOf(target) == -1){
+      return false;
+    }
+    remove(lastIndexOf(target));
+    return true;
+  }
 }
