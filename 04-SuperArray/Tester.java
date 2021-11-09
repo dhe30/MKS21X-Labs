@@ -55,5 +55,8 @@ public class Tester{
     alist.remove(1);
     System.out.println(alist);
     System.out.println(alist.size());
+    alist.remove("Mari");
+    System.out.println(alist);
+    System.out.println(alist.size());
   }
 }
