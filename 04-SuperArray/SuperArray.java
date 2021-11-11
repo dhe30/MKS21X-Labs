@@ -2,7 +2,10 @@ public class SuperArray{
   private String[] data;
   private int size;
   public SuperArray(int initialCapacity){
-    size = initialCapacity;
+    if (initialCapacity < 0){
+      throw new IllegalArgumentException("Illegal argument: " + initialCapacity);
+    }
+    size = 0;
     data = new String[size];
   }
   public SuperArray(){
@@ -22,6 +25,9 @@ public class SuperArray{
   }
   public String toString(){
     String res = "[";
+    if (size() == 0){
+      return res + "]";
+    }
     for (int i = 0; i < size(); i++){
       res = res + data[i] + ", ";
     }
@@ -29,6 +35,9 @@ public class SuperArray{
   }
   public String toStringDebug(){
     String res = "[";
+    if (size() == 0){
+      return res + "]";
+    }
     for (int i = 0; i < data.length; i++){
       res = res + data[i] + ", ";
     }
@@ -36,15 +45,13 @@ public class SuperArray{
   }
   public String get(int index){
     if (index < 0 || index >= size()){
-      System.out.println("error in get");
-      return null;
+      throw new IndexOutOfBoundsException ("Index out of bounds: " + index);
     }
     return data[index];
   }
   public String set(int index, String element){
     if (index < 0 || index >= size()){
-      System.out.println("error in set");
-      return null;
+      throw new IndexOutOfBoundsException ("Index out of bounds: " + index);
     }
     String hold = data[index];
     data[index] = element;
@@ -78,7 +85,7 @@ public class SuperArray{
   }
   public void add(int index,String value){
     if (index < 0 || index > size()){
-      System.out.println("error in void add");
+      throw new IndexOutOfBoundsException ("Index out of bounds: " + index);
     }
     if (size() == data.length){
       resize();
@@ -97,8 +104,7 @@ public class SuperArray{
   }
   public String remove(int index){
     if (index >= size() || index < 0){
-      System.out.println("error in remove");
-      return null;
+      throw new IndexOutOfBoundsException ("Index out of bounds: " + index);
     }
     String hold = data[index];
     for (int i = index; i < size(); i++){
