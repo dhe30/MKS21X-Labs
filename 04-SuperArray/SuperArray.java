@@ -69,7 +69,7 @@ public class SuperArray{
   }
   public int indexOf(String target){
     for (int i = 0; i < size(); i++){
-      if (data[i] == target){
+      if (data[i].equals(target)){
         return i;
       }
     }
@@ -77,7 +77,7 @@ public class SuperArray{
   }
   public int lastIndexOf(String target){
     for (int i = size() - 1; i >= 0; i--){
-      if (data[i] == target){
+      if (data[i].equals(target)){
         return i;
       }
     }
@@ -107,9 +107,10 @@ public class SuperArray{
       throw new IndexOutOfBoundsException ("Index out of bounds: " + index);
     }
     String hold = data[index];
-    for (int i = index; i < size(); i++){
+    for (int i = index; i < size() - 1; i++){
       data[i] = data[i + 1];
     }
+    data[size() - 1] = null;
     size--;
     return hold;
   }
