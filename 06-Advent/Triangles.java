@@ -46,7 +46,12 @@ public class Triangles {
         }
       }
   public static void main (String[] args){
-    triNum("data.txt");
-    triNum2("data.txt");
+    String file = args[0];
+    int a = Integer.parseInt(args[1]);
+    if (a == 2){
+      triNum2(file);
+    } else {
+      triNum(file);
+    }
   }
 }
