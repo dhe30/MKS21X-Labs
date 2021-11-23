@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Wrapping{
   public static void yes(String a){
     try{
+      int res = 0;
       File file = new File(a);
       Scanner input = new Scanner(file);
       while (input.hasNextLine()){
@@ -29,14 +30,16 @@ public class Wrapping{
             sa += slh;
           }
         }
+        res += sa;
       }
-      System.out.println(sa);
+      System.out.println(res);
       input.close();
-    } catch (FileNotFoundException){
+    } catch (FileNotFoundException e){
 
     }
   }
   public static void main (String[] args){
-    yes("input.txt");
+    String file = args[0];
+    yes(file);
   }
 }
