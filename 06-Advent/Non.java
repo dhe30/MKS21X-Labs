@@ -27,11 +27,29 @@ public class Non{
   public static boolean not(String a){
     for (int i = 0; i < a.length() - 1; i++){
       String b = a.substring(i, i + 2);
-      if (a.equals("ab") || a.equals("cd") || a.equals("pq") || a.equals("xy")){
+      if (b.equals("ab") || b.equals("cd") || b.equals("pq") || b.equals("xy")) {
         return false;
       }
     }
     return true;
+  }
+  public static boolean lapForPartTwo(String a){
+    for (int i = 0; i < a.length() - 1; i++){
+      String b = a.substring(i, i + 2);
+      if (a.lastIndexOf(b) > a.indexOf(b) + 1){
+        return true;
+      }
+    }
+    return false;
+  }
+  public static boolean theSecondConditionForPartTwo(String a){
+    for (int i = 0; i < a.length() - 2; i++){
+      String b = a.substring(i, i + 3);
+      if (b.substring(0, 1).equals(b.substring(2, 3))){
+        return true;
+      }
+    }
+    return false;
   }
   public static void yes(String a){
     try{
@@ -47,19 +65,24 @@ public class Non{
       System.out.println(res);
       input.close();
     } catch (FileNotFoundException e){
-
+        ;
     }
   }
   public static void yes2(String a){
     try{
+      int res = 0;
       File file = new File(a);
       Scanner input = new Scanner(file);
       while (input.hasNextLine()){
-
+        String ab = input.nextLine();
+        if (lapForPartTwo(ab) && theSecondConditionForPartTwo(ab)){
+          res++;
+        }
       }
+      System.out.println(res);
       input.close();
     } catch (FileNotFoundException e){
-
+        ;
     }
   }
   public static void main (String[] args){
