@@ -63,9 +63,9 @@ public class sortsTester extends Sorts{
     }
     if (win){
       if (mode == 1){
-        System.out.println("Many duplicates Success: Bubble");
+        System.out.println("With negatives Success: Bubble");
       } else if (mode == 2){
-        System.out.println("Many duplicates Success: Selection");
+        System.out.println("With negatives Success: Selection");
       }
     }
     // WITH ONLY ONE VALUE
@@ -96,9 +96,9 @@ public class sortsTester extends Sorts{
     }
     if (win){
       if (mode == 1){
-        System.out.println("Many duplicates Success: Bubble");
+        System.out.println("Only one value Success: Bubble");
       } else if (mode == 2){
-        System.out.println("Many duplicates Success: Selection");
+        System.out.println("Only one value Success: Selection");
       }
     }
     // REVERSE SORT
