@@ -41,7 +41,29 @@ public class Sorts{
       ary[min] = hold;
     }
   }
+  public static void insertionSort(int[]data){ /*Your implementation here*/
+    for(int i = 1; i < data.length; i++){
+      System.out.println(Arrays.toString(data));
+      if (data[i] < data[i - 1]){
+        int hold = 0;
+        for (int a = i - 1; a <= 0; a--){
+          System.out.println(data[i] + " greater than "+data[a]);
+          if (data[i] < data[a]){
+            hold = a;
+          }
+        }
+        int valueHold = data[hold];
+        data[hold] = data[i];
+        for (int b = i; b > hold + 1; b--){
+          data[b] = data[b - 1];
+        }
+        data[hold + 1] = valueHold;
+      }
+    }
+  }
   public static void main (String[] args){
-    
+    int[] a = new int[]{2,4,1,2,3,9,1};
+    insertionSort(a);
+    System.out.println(Arrays.toString(a));
   }
 }
