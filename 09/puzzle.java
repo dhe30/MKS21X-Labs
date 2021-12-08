@@ -9,12 +9,29 @@ public class puzzle{
     int min = 0;
     int maxRow = row - 1;
     int maxCol = col - length;
-    int startRow = (int)(Math.random()*(maxRow - min + 1)) + min;
-    int startCol = (int)(Math.random()*(maxCol - min + 1)) + min;
     int a = 0;
+    boolean badLap = true;
+    boolean wasBad = false;
+    int startCol = 0;
+    int startRow = 0;
+    while (badLap){
+      wasBad = false;
+      startRow = (int)(Math.random()*(maxRow - min + 1)) + min;
+      startCol = (int)(Math.random()*(maxCol - min + 1)) + min;
+      for (int i = startCol; i < length + startCol; i++){
+        if (Character.isLowerCase(empty[startRow][i].charAt(0)) && !empty[startRow][i].equals(word.substring(a, a + 1))) {
+          wasBad = true;
+          System.out.println("yes");
+        }
+      }
+      if(!wasBad){
+        badLap = false;
+      }
+    }
     for (int i = startCol; i < length + startCol; i++){
-      empty[startRow][i] = word.substring(a, a + 1);
-      a++;
+      System.out.println(startRow + " and " + startCol);
+        empty[startRow][i] = word.substring(a, a + 1);
+        a++;
     }
   }
   public static void diagonalRight(String[][] empty, String word, int row, int col){
@@ -24,7 +41,7 @@ public class puzzle{
     int maxCol = col - length;
     int startRow = (int)(Math.random()*(maxRow - min + 1)) + min;
     int startCol = (int)(Math.random()*(maxCol - min + 1)) + min;
-    System.out.println(startRow + " and " + startCol);
+
     int a = 0;
     while (a != length){
       empty[startRow][startCol] = word.substring(a, a + 1);
@@ -50,18 +67,21 @@ public class puzzle{
       File file = new File(word);
       Scanner input = new Scanner(file);
       while (input.hasNextLine()){
-        words.add(input.nextLine());
+        words.add(input.nextLine().toLowerCase());
       }
       input.close();
     } catch (FileNotFoundException e){
         ;
     }
     fill(result);
+    for (int i = 0; i < words.size(); i++){
+      horizontal(result, words.get(i), row, col);
+    }
     return result;
   }
   public static void main(String[] args){
-    String[][] happy = make(5, 5, "input.txt");
-    diagonalRight(happy, "YES", 5, 5);
+    String[][] happy = make(2, 5, "input.txt");
+
     for (int i = 0; i < happy.length; i++){
       System.out.println(Arrays.toString(happy[i]));
     }
