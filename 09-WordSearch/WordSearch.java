@@ -51,18 +51,20 @@ public class WordSearch{
     public boolean addWordHorizontal(String word,int row, int col){
       int a = 0;
       int max = data[row].length;
-      if (word.length() + col > max){
+      int maxRow = data.length;
+      if (word.length() + col > max || row > maxRow){
         return false;
       }
       for (int i = col; i < word.length() + col; i++){
         if (data[row][i] != '_' && data[row][i] != word.charAt(a)){
           return false;
-        } else {
-            data[row][i] = word.charAt(a);
-            a++;
         }
       }
-      return true
+      for (int i = col; i < word.length() + col; i++){
+            data[row][i] = word.charAt(a);
+            a++;
+      }
+      return true;
     }
 
 
@@ -81,18 +83,29 @@ public class WordSearch{
       int a = 0;
       int maxCol = data[row].length;
       int maxRow = data.length;
-      if (word.length() + col > maxCol || words.length() + row > maxRow){
+      if (word.length() > maxCol || word.length() + row > maxRow){
         return false;
       }
       while (a != word.length()){
         if (data[row][col] != '_' && data[row][col] != word.charAt(a)){
           return false;
-        } else {
+        }
+        row++;
+        a++;
+      }
+      a = 0;
+      row = 0;
+      while (a != word.length()){
           data[row][col] = word.charAt(a);
-          col++;
           row++;
           a++;
-        }
       }
+      return true;
+    }
+    public static void main(String[] args){
+      WordSearch a = new WordSearch(5, 5);
+      a.clear();
+      a.addWordHorizontal("aa", 4, 4);
+      System.out.println(a);
     }
 }
