@@ -215,29 +215,55 @@ public class WordSearch{
            data[row + i][col + i] = word.charAt(i);
          }
        } else if (colInc == -1){
-         System.out.println("yes!");
          if (word.length() + row > maxRow || col - word.length() < -1){
-           System.out.println("yes!");
            return false;
          }
          for (int i = 0; i < word.length(); i++){
            if (data[row + i][col - i] != '_' && data[row + i][col - i] != word.charAt(i)){
-             System.out.println("yes!");
              return false;
            }
          }
          for (int i = 0; i < word.length(); i++){
-           System.out.println("yes!");
            data[row + i][col - i] = word.charAt(i);
          }
        }
      } else if (rowInc == -1){
        if (colInc == 0){
-
+         if (row - word.length() < -1){
+           return false;
+         }
+         for (int i = 0; i < word.length(); i++){
+           if (data[row - i][col] != '_' && data[row - i][col] != word.charAt(i)){
+             return false;
+           }
+         }
+         for (int i = 0; i < word.length(); i++){
+           data[row - i][col]= word.charAt(i);
+         }
        } else if (colInc == 1){
-
+         if (row - word.length() < -1 || col + word.length() > maxCol){
+           return false;
+         }
+         for (int i = 0; i < word.length(); i++){
+           if (data[row - i][col + i] != '_' && data[row - i][col + i] != word.charAt(i)){
+             return false;
+           }
+         }
+         for (int i = 0; i < word.length(); i++){
+           data[row - i][col + i]= word.charAt(i);
+         }
        } else if (colInc == -1){
-
+         if (row - word.length() < -1 || col - word.length() < -1){
+           return false;
+         }
+         for (int i = 0; i < word.length(); i++){
+           if (data[row - i][col - i] != '_' && data[row - i][col - i] != word.charAt(i)){
+             return false;
+           }
+         }
+         for (int i = 0; i < word.length(); i++){
+           data[row - i][col - i]= word.charAt(i);
+         }
        }
        ;
      }
