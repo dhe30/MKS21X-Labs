@@ -53,7 +53,7 @@ public class WordSearch{
       int a = 0;
       int max = data[row].length;
       int maxRow = data.length;
-      if (word.length() + col > max || row > maxRow){
+      if (word.length() + col > max || row > maxRow || col < 0 || row < 0){
         return false;
       }
       for (int i = col; i < word.length() + col; i++){
@@ -84,7 +84,7 @@ public class WordSearch{
       int a = 0;
       int maxCol = data[row].length;
       int maxRow = data.length;
-      if (word.length() > maxCol || word.length() + row > maxRow){
+      if (col > maxCol || word.length() + row > maxRow || col < 0 || row < 0){
         return false;
       }
       while (a != word.length()){
@@ -119,7 +119,7 @@ public class WordSearch{
       if (word.length() > maxCol || word.length() > maxRow){
         return false;
       }
-      if (word.length() + col > maxCol || word.length() + row > maxRow){
+      if (word.length() + col > maxCol || word.length() + row > maxRow || row < 0 || col < 0){
         return false;
       }
       int a = 0;
@@ -140,4 +140,107 @@ public class WordSearch{
       }
       return true;
     }
+    /**Attempts to add a given word to the specified position of the WordGrid.
+     *The word is added as indicated by rowInc and colInc, it must fit on the board,
+     *and must have a corresponding letter to match any letters that it overlaps.
+     *
+     *@param word is any text to be added to the word grid.
+     *@param row is the vertical locaiton of where you want the word to start.
+     *@param col is the horizontal location of where you want the word to start.
+     *@param rowInc is the vertical direction of word additon.
+     *@param colInc is the horizontal direction of word addition.
+     *@return true when the word is added successfully. When the word doesn't fit,
+     *there are overlapping letters that do not match,or rowInc and colInc are both 0,
+     *then false is returned.
+     */
+     public boolean addWord(int row, int col, String word, int rowInc, int colInc){
+       int maxCol = data[row].length;
+       int maxRow = data.length;
+       if (row > maxRow || col > maxCol || col < 0 || row < 0){
+         return false;
+       }
+       if (rowInc == 0){
+         if (colInc == 0){
+           return false;
+         } else if (colInc == 1){
+           if (word.length() + col > maxCol){
+             return false;
+           }
+           for (int i = col; i < word.length(); i++){
+             if (data[row][i] != '_' && data[row][i] != word.charAt(i - col)){
+               return false;
+             }
+           }
+           for (int i = col; i < word.length(); i++){
+             data[row][i] = word.charAt(i - col);
+           }
+           ;
+         } else if (colInc == -1){
+           if (col - word.length() < -1){
+             return false;
+           }
+           for (int i = col; i >= col - word.length() + 1; i--){
+             if (data[row][i] != '_' && data[row][i] != word.charAt(col - i)){
+               return false;
+             }
+           }
+           for (int i = col; i >= col - word.length() + 1; i--){
+             data[row][i] = word.charAt(col - i);
+           }
+           ;
+         }
+     } else if (rowInc == 1){
+       if (colInc == 0){
+         if (word.length() + row > maxRow){
+           return false;
+         }
+         for (int i = row; i < word.length(); i++){
+           if (data[i][col] != '_' && data[i][col] != word.charAt(i - row)){
+             return false;
+           }
+         }
+         for (int i = row; i < word.length(); i++){
+           data[i][col] = word.charAt(i - row);
+         }
+       } else if (colInc == 1){
+         if (word.length() + row > maxRow || word.length() + col > maxCol){
+           return false;
+         }
+         for (int i = 0; i < word.length(); i++){
+           if (data[row + i][col + i] != '_' && data[row + i][col + i] != word.charAt(i)){
+             return false;
+           }
+         }
+         for (int i = 0; i < word.length(); i++){
+           data[row + i][col + i] = word.charAt(i);
+         }
+       } else if (colInc == -1){
+         System.out.println("yes!");
+         if (word.length() + row > maxRow || col - word.length() < -1){
+           System.out.println("yes!");
+           return false;
+         }
+         for (int i = 0; i < word.length(); i++){
+           if (data[row + i][col - i] != '_' && data[row + i][col - i] != word.charAt(i)){
+             System.out.println("yes!");
+             return false;
+           }
+         }
+         for (int i = 0; i < word.length(); i++){
+           System.out.println("yes!");
+           data[row + i][col - i] = word.charAt(i);
+         }
+       }
+     } else if (rowInc == -1){
+       if (colInc == 0){
+
+       } else if (colInc == 1){
+
+       } else if (colInc == -1){
+
+       }
+       ;
+     }
+     return true;
+   }
 }
