@@ -12,7 +12,7 @@ import java.util.Random;
       System.out.println("The seed: "+seed);
       rng = new Random(seed);
       for(int i =  0; i < 10; i++ ){
-        System.out.println(rng.nextInt() % 1000);
+        System.out.println(rng.nextInt(3));
       }
     }
   }
