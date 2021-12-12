@@ -3,7 +3,7 @@ public class tester{
     WordSearch a = new WordSearch(5, 5, "input.txt");
 
     System.out.println(a);
-    WordSearch b = new WordSearch(5, 5);
-    
+    WordSearch b = new WordSearch(5, 5, "input.txt", -1698422407);
+    System.out.println(b);
   }
 }

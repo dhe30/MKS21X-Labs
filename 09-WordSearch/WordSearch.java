@@ -61,8 +61,12 @@ public class WordSearch{
         }
         result += "\n";
       }
-      res+="\n";
-      result += ("Seed: " + seed);
+      result+="Words: ";
+      for (int i = 0; i < wordsAdded.size(); i++){
+        result+=wordsAdded.get(i) + ", ";
+      }
+      result=result.substring(0, result.length() - 2);
+      result += ("\nSeed: " + seed);
       return result;
     }
 
@@ -319,7 +323,7 @@ public class WordSearch{
         while (!added && a < 100000){
           if (addWord(randgen.nextInt(data.length), randgen.nextInt(data[1].length), wordsThatNeedToBeAdded.get(i), randgen.nextInt(3) - 1, randgen.nextInt(3) - 1) ) {
             added = true;
-            wordsAdded.add(wordsThatNeedToBeAdded(i));
+            wordsAdded.add(wordsThatNeedToBeAdded.get(i));
           } else {
             a++;
           }
