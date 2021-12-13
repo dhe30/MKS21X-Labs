@@ -114,4 +114,14 @@ public class WordSearch{
     ans += "\nseed: "+seed;
     return ans;
   }
+
+  public void fillInRandomLetters(){
+    for (int i = 0; i < grid.length; i++){
+      for (int a = 0; a < grid[i].length; a++){
+        if (grid[i][a] != ('_')){
+          grid[i][a] = (char)(rng.nextInt(25) + 65);
+        }
+      }
+    }
+  }
 }
