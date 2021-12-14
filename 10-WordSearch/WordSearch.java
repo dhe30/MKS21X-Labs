@@ -11,7 +11,6 @@ public class WordSearch{
     ArrayList<String> wordsToAdd = loadWordsFromFile(filename);
     int length = wordsToAdd.size();
     for (int i = 0; i < length ; i++){
-      System.out.println((wordsToAdd));
       boolean added = false;
       int a = 0;
       String currentWord = wordsToAdd.get(rng.nextInt(wordsToAdd.size()));
