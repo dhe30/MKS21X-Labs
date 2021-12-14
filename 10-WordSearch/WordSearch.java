@@ -9,11 +9,15 @@ public class WordSearch{
   //assume a rectangular grid
   private void addAllWords(String filename){
     ArrayList<String> wordsToAdd = loadWordsFromFile(filename);
-    for (int i = 0; i < wordsToAdd.size(); i++){
+    int length = wordsToAdd.size();
+    for (int i = 0; i < length ; i++){
+      System.out.println((wordsToAdd));
       boolean added = false;
       int a = 0;
+      String currentWord = wordsToAdd.get(rng.nextInt(wordsToAdd.size()));
       while (!added && a < 10000){
-        if (addWord(rng.nextInt(grid.length), rng.nextInt(grid[1].length), wordsToAdd.get(i), rng.nextInt(3) - 1, rng.nextInt(3) - 1) ) {
+        if (addWord(currentWord, rng.nextInt(grid.length), rng.nextInt(grid[1].length), rng.nextInt(3) - 1, rng.nextInt(3) - 1) ) {
+          wordsToAdd.remove(currentWord);
           added = true;
         } else {
           a++;
@@ -118,10 +122,26 @@ public class WordSearch{
   public void fillInRandomLetters(){
     for (int i = 0; i < grid.length; i++){
       for (int a = 0; a < grid[i].length; a++){
-        if (grid[i][a] != ('_')){
+        if (grid[i][a] == ('_')){
           grid[i][a] = (char)(rng.nextInt(25) + 65);
         }
       }
     }
+  }
+  public static void main(String[] args){
+    int rows = Integer.parseInt(args[0]);
+    int col = Integer.parseInt(args[1]);
+    String filename = args[2];
+    int mode = Integer.parseInt(args[3]);
+    WordSearch result = new WordSearch(rows, col, filename);
+    if (args.length == 5){
+      int seed = Integer.parseInt(args[4]);
+       result = new WordSearch(rows, col, filename, seed);
+    }
+
+    if (mode == 0){
+      result.fillInRandomLetters();
+    }
+    System.out.println(result);
   }
 }
