@@ -125,7 +125,7 @@ public class WordSearch{
     for (int i = 0; i < grid.length; i++){
       for (int a = 0; a < grid[i].length; a++){
         if (grid[i][a] == ('_')){
-          grid[i][a] = (char)(rng.nextInt(25) + 65);
+          grid[i][a] = (char)(rng.nextInt(26) + 65);
         }
       }
     }
