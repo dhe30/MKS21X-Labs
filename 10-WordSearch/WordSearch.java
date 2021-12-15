@@ -21,6 +21,9 @@ public class WordSearch{
         } else {
           a++;
         }
+        if (a == 9999){
+          wordsToAdd.remove(currentWord);
+        }
       }
     }
     //You are writing this
