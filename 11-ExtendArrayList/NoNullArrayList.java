@@ -1,17 +1,33 @@
+import java.util.*;
 public class NoNullArrayList<T> extends ArrayList<T> {
-  private T value;
-  private int initialCapacity
+
   public NoNullArrayList(){
     super();
   }
-  public NoNullArrayList(initialCapacity){
+  public NoNullArrayList(int initialCapacity){
     super(initialCapacity);
   }
-  public T set(int a, String b){
-    if (!indexOf(a).equals(null)){
-      throw new IllegalArgumentException("");
+  public T set(int a, T b){
+    if (b==(null)){
+      throw new IllegalArgumentException("null");
     } else {
       super.set(a, b);
+    }
+    return b;
+  }
+  public boolean add(T b){
+    if (b==(null)){
+      throw new IllegalArgumentException("null");
+    } else {
+      super.add(b);
+    }
+    return true;
+  }
+  public void add(int a, T b){
+    if (b==(null)){
+      throw new IllegalArgumentException("null");
+    } else {
+      super.add(a, b);
     }
   }
 }
