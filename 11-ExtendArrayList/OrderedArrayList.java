@@ -19,9 +19,10 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
       return size();
     }
   public T set(int a, T b){
+    T value = get(a);
     remove(a);
     super.add(whereToPlace(b), b);
-    return b;
+    return value;
   }
   public boolean add(T b){
     super.add(whereToPlace(b), b);

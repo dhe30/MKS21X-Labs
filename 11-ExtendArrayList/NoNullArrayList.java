@@ -8,12 +8,13 @@ public class NoNullArrayList<T> extends ArrayList<T> {
     super(initialCapacity);
   }
   public T set(int a, T b){
+    T value = get(a);
     if (b==(null)){
       throw new IllegalArgumentException("null");
     } else {
       super.set(a, b);
     }
-    return b;
+    return value;
   }
   public boolean add(T b){
     if (b==(null)){

@@ -10,7 +10,7 @@ public class tester{
     for (int i = 10; i >= 0; i--){
       b.add(i);
     }
-    b.add(null);
+    b.add(11);
     System.out.println(b);
   }
 }
