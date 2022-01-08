@@ -39,5 +39,9 @@ public class Wizard extends Adventurer{
       System.out.println(this + " has run out of mana! " + this + " uses black magic and sacrifices " + self + " HP to deal " + damage/4 +" damage!");
     }
   }
-  
+  public void specialAttack(Damageable other){
+    setMana(getMana() + 15);
+    System.out.println("\"" + incantation + "\". " + this + " recites an incantation to restore 15 mana and attacks!");
+    attack(other);
+  }
 }
