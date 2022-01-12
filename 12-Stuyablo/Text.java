@@ -93,7 +93,18 @@ public class Text{
     for (int a = 0; a < 80; a++){
       System.out.print(colorize(" ", WHITE + BACKGROUND));
     }
-    
+    for (int i = 0; i < 4; i++){
+      int Science = (int)(Math.random()*100);
+      go(2,2 + i*19);
+      if (Science < 25){
+        System.out.print(colorize("" + Science, RED));
+      } else if (Science > 75){
+        System.out.print(colorize("" + Science, GREEN));
+      } else {
+        System.out.print(colorize("" + Science, WHITE));
+      }
+    }
+    go(31,1);
     reset();
     showCursor();
   }
