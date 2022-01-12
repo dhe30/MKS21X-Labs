@@ -81,15 +81,19 @@ public class Text{
     clear();
     go(1,1);
     for (int a = 0; a < 80; a++){
-      System.out.print("a");
+      System.out.print(colorize(" ", WHITE + BACKGROUND));
     }
     for (int i = 1; i < 29; i++){
       go(1+i, 1);
-      System.out.print("a");
+      System.out.print(colorize(" ", WHITE + BACKGROUND));
       go(1 + i, 80);
-      System.out.print("a");
+      System.out.print(colorize(" ", WHITE + BACKGROUND));
     }
-    go(35,1);
+    go(30,1);
+    for (int a = 0; a < 80; a++){
+      System.out.print(colorize(" ", WHITE + BACKGROUND));
+    }
+    
     reset();
     showCursor();
   }
