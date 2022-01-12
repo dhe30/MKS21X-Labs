@@ -30,6 +30,7 @@ public class Game{
         System.out.print(Text.colorize("" + Science, WHITE));
       }
     }
+    Text.go(31, 1);
   }
   public static void did(){
     Text.hideCursor();
@@ -64,6 +65,18 @@ public class Game{
     System.out.print(">");
 
     String in = input.nextLine();
-    while (in != "" || in != "q" || in !=)
+    while (!in.equals("q") && !in.equals("quit")){
+      if (in.equals("")){
+        ;
+      } else{
+      for (int i = 0; i < 4; i++){
+        rando[i] = (int)(Math.random()*100);
+      }}
+      did();
+      numbers(rando);
+      input = new Scanner(System.in);
+      System.out.print(">");
+      in = input.nextLine();
+    }
   }
 }
