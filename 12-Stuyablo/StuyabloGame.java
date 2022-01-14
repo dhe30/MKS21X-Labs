@@ -22,7 +22,11 @@ public class StuyabloGame{
     }
     for (int i = 0; i < party.size(); i++){
       Text.go(startRow + 1, 2 + (i * spaces));
-      System.out.print(party.get(i).getHP());
+      System.out.print(party.get(i).getSpecialName() + ":" + party.get(i).getSpecial() + "/"+ party.get(i).getSpecialMax());
+    }
+    for (int i = 0; i < party.size(); i++){
+      Text.go(startRow + 2, 2 + (i * spaces));
+      System.out.print("HP:" + party.get(i).getHP() + "/" + party.get(i).getmaxHP());
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
@@ -112,15 +116,13 @@ public class StuyabloGame{
         if(input.equals("attack")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          Text.go((HEIGHT/2) + 1, 2);
-          party.get(whichPlayer).attack(enemies.get(0));
+          drawText(party.get(whichPlayer).attack(enemies.get(0)), (HEIGHT/2) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          Text.go((HEIGHT/2) + 1, 2);
-          party.get(whichPlayer).specialAttack(enemies.get(0));
+          drawText(party.get(whichPlayer).specialAttack(enemies.get(0)), (HEIGHT/2) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         whichPlayer++;
@@ -144,9 +146,9 @@ public class StuyabloGame{
           Text.go((HEIGHT/2) + 1, 2);
           int rengee = (int)(Math.random()*10)+1;
           if (rengee > 3){
-            enemies.get(0).attack(party.get((int)(Math.random()*party.size())));
+            drawText(enemies.get(0).attack(party.get((int)(Math.random()*party.size()))), (HEIGHT/ 2) - 1);
           } else {
-            enemies.get(0).specialAttack(party.get((int)(Math.random()*party.size())));
+            drawText(enemies.get(0).specialAttack(party.get((int)(Math.random()*party.size()))), (HEIGHT/ 2) - 1);
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }

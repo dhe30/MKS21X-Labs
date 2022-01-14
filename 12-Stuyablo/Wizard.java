@@ -1,7 +1,7 @@
 public class Wizard extends Adventurer{
   private int mana;
   private String incantation;
-
+  private int manaMax;
   public Wizard(){
     this("Nick");
   }
@@ -12,7 +12,18 @@ public class Wizard extends Adventurer{
     super(name,30+(int)(Math.random()*10));
     setMana(mana);
     setIncantation(incantation);
+    manaMax = 30;
   }
+
+  public String getSpecialName(){
+            return "Mana";
+          }
+  public int getSpecialMax(){
+            return manaMax;
+          }
+  public int getSpecial(){
+            return mana;
+          }
   public void setMana(int a){
     this.mana = a;
   }
@@ -22,27 +33,30 @@ public class Wizard extends Adventurer{
   public int getMana(){
     return mana;
   }
-  public void attack(Damageable other){
+  public String attack(Damageable other){
     int damage = 10 + (int)(Math.random()*16);
     if(getMana() >= 10){
       setMana(getMana() - 10);
       if(((int)(Math.random()*10) + 1) <= 3){
-        System.out.println("Oops! " + this +" tripped on a rock!");
+        return("Oops! " + this +" tripped on a rock!");
       } else {
         other.applyDamage(damage);
-        System.out.println(this + " casts a spell using 10 mana to deal " + damage + " damage!");
+        return(this + " casts a spell using 10 mana to deal " + damage + " damage!");
       }
     } else {
       other.applyDamage(damage/4);
       int self = (int)(Math.random()*(damage/4 + 1)) + 1;
       applyDamage(self);
-      System.out.println(this + " has run out of mana! " + this + " uses black magic and sacrifices " + self + " HP to deal " + damage/4 +" damage!");
+      return(this + " has no mana! " + this + " uses black magic to sacrifice " + self + " HP to deal " + damage/4 +" damage!");
     }
+    
   }
-  public void specialAttack(Damageable other){
+  public String specialAttack(Damageable other){
     setMana(getMana() + 15);
-    System.out.println("\"" + incantation + "\". " + this + " recites an incantation to restore 15 mana and attacks!");
+    String ness = attack(other);
+    String happy = ("\"" + incantation + "\". " + this + " recites an incantation to restore 15 mana and attacks!");
+    return happy + " " + ness;
 
-    attack(other);
+
   }
 }
