@@ -41,7 +41,7 @@ public class Wizard extends Adventurer{
         return("Oops! " + this +" tripped on a rock!");
       } else {
         other.applyDamage(damage);
-        return(this + " casts a spell using 10 mana to deal " + damage + " damage!");
+        return(this + " casts a spell using 10 mana to deal " + damage + " damage!" + other);
       }
     } else {
       other.applyDamage(damage/4);
@@ -49,7 +49,7 @@ public class Wizard extends Adventurer{
       applyDamage(self);
       return(this + " has no mana! " + this + " uses black magic to sacrifice " + self + " HP to deal " + damage/4 +" damage!");
     }
-    
+
   }
   public String specialAttack(Damageable other){
     setMana(getMana() + 15);
