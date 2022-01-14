@@ -42,6 +42,7 @@ public class Wizard extends Adventurer{
   public void specialAttack(Damageable other){
     setMana(getMana() + 15);
     System.out.println("\"" + incantation + "\". " + this + " recites an incantation to restore 15 mana and attacks!");
+
     attack(other);
   }
 }

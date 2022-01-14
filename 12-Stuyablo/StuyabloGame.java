@@ -14,6 +14,16 @@ public class StuyabloGame{
   public static void drawParty(ArrayList<Adventurer> party,int startRow){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    int spaces = (WIDTH - 2)/party.size();
+
+    for (int i = 0; i < party.size(); i++){
+      Text.go(startRow, 2 + (i * spaces));
+      System.out.print(party.get(i).getName());
+    }
+    for (int i = 0; i < party.size(); i++){
+      Text.go(startRow + 1, 2 + (i * spaces));
+      System.out.print(party.get(i).getHP());
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -21,12 +31,34 @@ public class StuyabloGame{
   public static void drawText(String s,int startRow){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    Text.go(startRow, 2);
+    System.out.print(s);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
   public static void drawScreen(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    Text.hideCursor();
+    Text.clear();
+    Text.go(1,1);
+    for (int a = 0; a < 80; a++){
+      System.out.print(Text.colorize(" ", BORDER_BACKGROUND));
+    }
+    for (int i = 1; i < 29; i++){
+      Text.go(1+i, 1);
+      System.out.print(Text.colorize("a", Text.RED + Text.BACKGROUND));
+      Text.go(1 + i, 80);
+      System.out.print(Text.colorize(" ", BORDER_BACKGROUND));
+    }
+    Text.go(30,1);
+    for (int a = 0; a < 80; a++){
+      System.out.print(Text.colorize(" ", BORDER_BACKGROUND));
+    }
+
+    Text.go(31,1);
+    Text.reset();
+    Text.showCursor();
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -43,6 +75,8 @@ public class StuyabloGame{
     ArrayList<Adventurer>enemies = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    Adventurer emily = new Wizard("Emily");
+    enemies.add(emily);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -50,6 +84,12 @@ public class StuyabloGame{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    Adventurer olivia = new Wizard("Olivia");
+    party.add(olivia);
+    olivia = new Warrior("Samuel");
+    party.add(olivia);
+    olivia = new Warrior("Cranberry");
+    party.add(olivia);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Main loop
@@ -72,11 +112,15 @@ public class StuyabloGame{
         if(input.equals("attack")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          Text.go((HEIGHT/2) + 1, 2);
+          party.get(whichPlayer).attack(enemies.get(0));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          Text.go((HEIGHT/2) + 1, 2);
+          party.get(whichPlayer).specialAttack(enemies.get(0));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         whichPlayer++;
@@ -97,6 +141,13 @@ public class StuyabloGame{
           //Enemy action choices go here!
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          Text.go((HEIGHT/2) + 1, 2);
+          int rengee = (int)(Math.random()*10)+1;
+          if (rengee > 3){
+            enemies.get(0).attack(party.get((int)(Math.random()*party.size())));
+          } else {
+            enemies.get(0).specialAttack(party.get((int)(Math.random()*party.size())));
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
