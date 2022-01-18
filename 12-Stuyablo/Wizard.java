@@ -41,21 +41,22 @@ public class Wizard extends Adventurer{
         return("Oops! " + this +" tripped on a rock!");
       } else {
         other.applyDamage(damage);
-        return(this + " casts a spell using 10 mana to deal " + damage + " damage!" + other);
+        return(this + " casts a spell using 10 mana dealing " + damage + " damage to " + other + "!");
       }
     } else {
       other.applyDamage(damage/4);
       int self = (int)(Math.random()*(damage/4 + 1)) + 1;
       applyDamage(self);
-      return(this + " has no mana! " + this + " uses black magic to sacrifice " + self + " HP to deal " + damage/4 +" damage!");
+      return("No mana! " + this + " uses dark magic sacrificing " + self + " HP to deal " + damage/4 +" damage to " + other + "!");
     }
 
   }
   public String specialAttack(Damageable other){
     setMana(getMana() + 15);
-    String ness = attack(other);
-    String happy = ("\"" + incantation + "\". " + this + " recites an incantation to restore 15 mana and attacks!");
-    return happy + " " + ness;
+    int currant = getmaxHP() - getHP();
+    setHP(getmaxHP());
+    String happy = ("\"" + incantation + "\". " + this + " recites an incantation to restore 15 mana and " + currant + " HP!");
+    return happy;
 
 
   }
